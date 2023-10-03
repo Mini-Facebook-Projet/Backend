@@ -6,8 +6,13 @@ module.exports = mongoose.model('Comment',{
         type : Date,
         default: Date.now()
     },
-    author:{type : String},
-    poste :{
+    authorId:{
+        type: mongoose.Schema.Types.ObjectId,
+    },
+    authorName:{
+        type: String,
+    },
+    post :{
         type: mongoose.Schema.Types.ObjectId
     }
 })
