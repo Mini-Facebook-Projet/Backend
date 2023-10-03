@@ -15,3 +15,9 @@
 -body-parse : as midleware to parse requeste bodies
 -nodemon : to handle node server instade of node 
 -express : to make the dev a litle bit easy then code with node
+
+### To run the serveur 
+nodemon index.js
+
+### Don't forget to install packages
+npm i
