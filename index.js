@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cors = require ('cors')
 //local 
 //import db promise
 const connectDb = require('./db.js')
@@ -9,8 +10,9 @@ const commentRoutes = require('./controllers/CommentController.js')
 const app = express()
 //Midleware to parse requeste body to json
 app.use(bodyParser.json())
-app.use('/api/postes',posteRoutes)
-app.use('/api/comments',commentRoutes)
+app.use(cors())
+app.use('/api/v1/postes',posteRoutes)
+app.use('/api/v1/comments',commentRoutes)
 
 
 connectDb()
