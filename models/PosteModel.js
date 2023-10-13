@@ -1,17 +1,17 @@
 const mongoose = require('mongoose')
 
 module.exports = mongoose.model('Poste',{
+    author:{
+        id:{type : mongoose.Schema.Types.ObjectId},
+        name : {type : String}
+    },
     content : {type : String},
     dateCreation : {
         type : Date,
         default: Date.now()
     },
-    imageUrl : {type : String},
-    likeNumber : {type : Number},
-    dislikeNumber : {type : Number},
-    commentNumber : {type : Number},
-    author:{
-        type : mongoose.Schema.Types.ObjectId
-    },
+    image : {type : String},
+    likes : [{type : mongoose.Schema.Types.ObjectId}],
+    commentNumber : {type : Number,default:0},  
 
 })

@@ -9,7 +9,8 @@ const router = express.Router()
 const Poste = require('../models/PosteModel')
 
 // get All postes
-router.get('/',(req,res)=>{
+router.get('/list',(req,res)=>{
+    console.log('request body :',req.body)
     Poste.find()
     .then(data => res.status(201).json(data))
     .catch(err => console.log(err))
@@ -17,7 +18,7 @@ router.get('/',(req,res)=>{
 
 
 // get poste by id
-router.get('/:id',(req,res)=>{
+router.get('/id/:id',(req,res)=>{
     if(objectId.isValid(req.params.id) == false){
         res.status(400).json({
             error: " id is not valid"
