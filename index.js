@@ -17,7 +17,7 @@ app.use(cors())
 app.use('/api/v1/', userRoutes);
 
 app.use('/api/v1/postes',posteRoutes)
-app.use('/api/v1/comments',commentRoutes)
+app.use('/api/v1/comments/',commentRoutes)
 
 
 connectDb()

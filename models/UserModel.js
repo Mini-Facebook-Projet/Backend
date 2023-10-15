@@ -30,9 +30,7 @@ const userSchema = new mongoose.Schema({
       }
     },
   },
-  image:{type:String, default : ''}
-
-  
+  image:{type:String, default : ''}  
 });
 
 /*userSchema.pre("save", async function (next) {
