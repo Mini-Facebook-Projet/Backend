@@ -11,7 +11,7 @@ const Poste = require('../models/PosteModel')
 // get All postes
 router.get('/list',(req,res)=>{
     // console.log('request body :',req.body)
-    Poste.find()
+    Poste.find().sort({dateCreation:-1})
     .then(data => res.status(201).json(data))
     .catch(err => console.log(err))
 })
@@ -39,11 +39,31 @@ router.get('/id/:id',(req,res)=>{
 })
 
 // create a poste
-router.post('/',(req,res)=>{
-    Poste.create(req.body)
-    .then(data => res.send(data))
-    .catch(err => console.log(err))
-})
+// router.post('/',(req,res)=>{
+//     Poste.create(req.body)
+//     .then(data => res.send(data))
+//     .catch(err => console.log(err))
+// })
+// create a post and return posts list if success
+router.post('/', (req, res) => {
+  Poste.create(req.body)
+      .then(data => {
+          // Après l'insertion réussie, récupérez la liste complète des postes
+          Poste.find().sort({dateCreation:-1})
+              .then(postes => {
+                  res.send(postes);
+              })
+              .catch(err => {
+                  console.log(err);
+                  res.status(500).json({ error: 'Internal server error' });
+              });
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).json({ error: 'Internal server error' });
+      });
+});
+
 
 // update poste by id
 router.put('/:id',(req,res)=>{
