@@ -248,14 +248,32 @@ router.get('/likes/:postId/:userId', (req, res) => {
       });
   });
 
+// Get posts by user id
+router.get('/user/:userId', (req, res) => {
+  const userId = req.params.userId;
 
+  // Assurez-vous que l'ID de l'utilisateur est valide
+  if (!objectId.isValid(userId)) {
+    return res.status(400).json({
+      error: 'ID d\'utilisateur non valide',
+    });
+  }
 
+  Poste.find({ userId }) 
+    .sort({ dateCreation: -1 })
+    .then(data => {
+      if (data.length === 0) {
+        res.status(200).json([]);
+      } else {
+        res.status(200).json(data);
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: 'Erreur lors de la recherche des postes de l\'utilisateur',
+      });
+    });
+});
 
-
-
-
-
-
-
-
-module.exports = router
+module.exports = router;
