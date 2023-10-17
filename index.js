@@ -7,22 +7,21 @@ const cors = require('cors');
 const connectDb = require('./db.js');
 
 // Import controllers routers
-const posteRoutes = require('./controllers/PosteController.js');
-const commentRoutes = require('./controllers/CommentController.js');
+// const posteRoutes = require('./controllers/PostController.js');
+// const commentRoutes = require('./controllers/CommentController.js');
 const app = express();
 
 
 const userRoutes = require('./routes/userRoutes');
-//Midleware to parse requeste body to json
-app.use(bodyParser.json())
-app.use(cors())
+const postRoutes = require('./routes/postRoutes.js')
+const commentRoutes = require('./routes/commentRoutes.js')
 
 // Middleware to parse request body to JSON
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api/v1/users', userRoutes);
-app.use('/api/v1/postes', posteRoutes);
-app.use('/api/v1/comments/', commentRoutes);
+app.use('/api/v1/posts', postRoutes);
+app.use('/api/v1/comments', commentRoutes);
 
 const config = require('./config/config.js')
 const port = config.PORT

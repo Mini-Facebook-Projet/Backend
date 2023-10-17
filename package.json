@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/userController.test.js",
+    "test": "mocha tests/post.test.js",
     "start": "nodemon index.js"
-  },
+  }  ,
   "author": "",
   "license": "ISC",
   "dependencies": {
