@@ -3,25 +3,22 @@ const express = require('express')
 //to check object id
 const objectId = require('mongoose').Types.ObjectId
 
-const router = express.Router()
-
 const comment = require('../models/CommentModel')
 
 // get All comments
-router.get('/', (req, res) => {
-    comment.find()
-        .then(data => res.status(201).json(data))
-        .catch(err => console.log(err))
-})
+// exports.getAllComments =(req, res) => {
+//     comment.find()
+//         .then(data => res.status(201).json(data))
+//         .catch(err => console.log(err))
+// }
 
 // return comments by post id and with a limit if defined
-router.get('/postId/:id', (req, res) => {
+exports.getCommentsByPost = (req, res) => {
     if (!objectId.isValid(req.params.id)) {
         return res.status(400).json({
             error: "ID is not valid"
         });
     }
-
     const limit = parseInt(req.query.limit, 10);
 
     if (!isNaN(limit) && limit > 0) {
@@ -59,7 +56,21 @@ router.get('/postId/:id', (req, res) => {
                 });
             });
     }
-});
+}
+// Obtenir le nombre de commentaires par poste
+exports.getCommentsCountByPost = (req, res) => {
+    const postID = req.params.postID;
+
+    // Compter le nombre de commentaires associés à un poste spécifique
+    comment.countDocuments({ post: postID })
+        .then(commentCount => {
+            res.json({ commentCount });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: 'Internal server error' });
+        });
+}
 
 // Create comments
 // router.post('/create', (req, res) => {
@@ -67,7 +78,7 @@ router.get('/postId/:id', (req, res) => {
 //         .then(data => res.send(data))
 //         .catch(err => console.log(err))
 // })
-router.post('/create', (req, res) => {
+exports.createComment=(req, res) => {
     // Insérez le commentaire dans la base de données
     comment.create(req.body)
         .then(data => {
@@ -86,22 +97,4 @@ router.post('/create', (req, res) => {
             console.log(err);
             res.status(400).json({ error: 'Bad request' });
         });
-});
-
-// Obtenir le nombre de commentaires par poste
-router.get('/countByPost/:postID', (req, res) => {
-    const postID = req.params.postID;
-
-    // Compter le nombre de commentaires associés à un poste spécifique
-    comment.countDocuments({ post: postID })
-        .then(commentCount => {
-            res.json({ commentCount });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({ error: 'Internal server error' });
-        });
-});
-
-
-module.exports = router
+}
