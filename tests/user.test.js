@@ -11,10 +11,10 @@ describe('User Registration', () => {
   it('should register a new user', (done) => {
     chai.request(app)
       .post('/api/v1/users/Signup')
-      .send({ name: 'John Doe', email: 'johndoe@example.com', password: 'password123' })
+      .send({ name: 'test2', email: 'test2@example.com', password: 'password123' })
       .end((err, res) => {
         expect(res).to.have.status(201);
-        expect(res.body).to.have.property('token');
+        expect(res.body).to.deep.equal({status:'ok'});
         done();
       });
   });
@@ -22,7 +22,7 @@ describe('User Registration', () => {
   it('should not register a user with an existing email', (done) => {
     chai.request(app)
       .post('/api/v1/users/Signup')
-      .send({ name: 'Jane Doe', email: 'johndoe@example.com', password: 'newpassword' })
+      .send({ name: 'Jane Doe', email: 'test2@example.com', password: 'newpassword' })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.error).to.equal('This email already exists.');
