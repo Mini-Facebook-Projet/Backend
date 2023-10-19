@@ -14,13 +14,14 @@ const app = express();
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes.js')
 const commentRoutes = require('./routes/commentRoutes.js')
+const authMiddleware = require('./middleware/authMiddleware.js')
 
 // Middleware to parse request body to JSON
 app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/api/v1/users', userRoutes);
-app.use('/api/v1/posts', postRoutes);
+app.use('/api/v1/posts', authMiddleware ,postRoutes);
 app.use('/api/v1/comments', commentRoutes);
 
 const config = require('./config/config.js')

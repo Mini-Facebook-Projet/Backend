@@ -17,7 +17,7 @@
 -express : to make the dev a litle bit easy then code with node
 
 ### To run the serveur 
-nodemon index.js
+nodemon index.js or npm start
 
 ### Don't forget to install packages
 npm i
@@ -35,3 +35,16 @@ npm i
  8. Réinitialisation de mot de passe oublié
  9. Historique de connexion
  10. Sécurité de la base de données
+
+
+
+ {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMxMGY1NmIwYzMxYjA5OTA2OTBhMTgiLCJpYXQiOjE2OTc3MTQwMjEsImV4cCI6MTY5NzcxNTgyMX0.Gs2Lx-gQaxCvMtgCTZ3na8o-wKuyCABWNyDK_yOFSt8",
+    "user": {
+        "_id": "65310f56b0c31b0990690a18",
+        "name": "tiani",
+        "email": "tiani@gmail.com",
+        "image": ""
+    },
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMxMGY1NmIwYzMxYjA5OTA2OTBhMTgiLCJpYXQiOjE2OTc3MTQwMjEsImV4cCI6MTcwMDMwNjAyMX0.pdB2EUta_nZ24zbpfbvY2hrJvAG9JoZ3wT3WhHV5vsM"
+}
