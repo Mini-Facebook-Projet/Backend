@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/api/v1/users', userRoutes);
-app.use('/api/v1/posts', authMiddleware ,postRoutes);
+app.use('/api/v1/postes', authMiddleware ,postRoutes);
 app.use('/api/v1/comments', commentRoutes);
 
 const config = require('./config/config.js')
