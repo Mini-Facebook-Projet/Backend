@@ -67,7 +67,7 @@ exports.authenticateUser = async (req, res) => {
     };
 
     // Renvoyer à la fois le token et les informations de l'utilisateur
-    res.status(200).json({ token, user: userResponse, refreshToken: refreshToken });
+    res.status(200).json({ token, user: userResponse, refreshToken });
   } catch (error) {
     console.error('Error during authentication: ' + error);
     res.status(500).json({ error: 'An error occurred during authentication.' });
@@ -83,6 +83,7 @@ exports.refreshToken = (req, res) => {
     const accessToken = jwt.sign({ _id: user._id }, config.JWT_SECRET, {
       expiresIn: config.JWT_TOKEN_LIFE_TME,
     });
+    console.log('new token : ',accessToken)
     res.json({ accessToken });
   });
 }

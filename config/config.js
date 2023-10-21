@@ -4,4 +4,5 @@ module.exports = {
     JWT_TOKEN_LIFE_TME: '30m', // Durée de validité des tokens JWT (par exemple, 30 jours)
     JWT_REFRESH_TOKEN_LIFE_TIME : '30d',
     PORT:8080,
+    CHAT_API_KEY: "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"
 };

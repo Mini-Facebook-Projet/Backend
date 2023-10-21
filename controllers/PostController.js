@@ -110,6 +110,7 @@ exports.updatePostById = (req, res) => {
 exports.addLikeToPost = (req, res) => {
   const postId = req.params.id;
   const userId = req.body.userId; // L'ID de l'utilisateur
+  // console.log('body :', req.body)
 
   if (!objectId.isValid(postId)) {
     return res.status(400).json({
@@ -118,6 +119,7 @@ exports.addLikeToPost = (req, res) => {
   }
 
   if (!objectId.isValid(userId)) {
+    // console.log('user id :',userId)
     return res.status(400).json({
       error: 'ID d\'utilisateur non valide',
     });
