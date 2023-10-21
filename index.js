@@ -6,9 +6,7 @@ const cors = require('cors');
 // Import db promise
 const connectDb = require('./db.js');
 
-// Import controllers routers
-// const posteRoutes = require('./controllers/PostController.js');
-// const commentRoutes = require('./controllers/CommentController.js');
+
 const app = express();
 
 const userRoutes = require('./routes/userRoutes');
