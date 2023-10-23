@@ -17,7 +17,7 @@
 -express : to make the dev a litle bit easy then code with node
 
 ### To run the serveur 
-nodemon index.js
+nodemon index.js or npm start
 
 ### Don't forget to install packages
 npm i
