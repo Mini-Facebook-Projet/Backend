@@ -46,7 +46,7 @@ exports.getPostByUserId=(req, res) => {
     });
   }
 
-  Poste.find({ userId })
+  Poste.find({ 'author.id':userId })
     .sort({ dateCreation: -1 })
     .then(data => {
       if (data.length === 0) {
