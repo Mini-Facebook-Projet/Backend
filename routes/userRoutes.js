@@ -10,6 +10,7 @@ router.post('/Signup', userController.createUser);
 router.post('/Signin', userController.authenticateUser);
 router.post('/update/:id',authMiddleware,userController.updateUser)
 router.get('/image/:id', authMiddleware,userController.getUserImage)
+router.post('/refresh-token',userController.refreshToken)
 
 
 module.exports = router;

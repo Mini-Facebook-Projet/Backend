@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const postController = require('../controllers/PostController');
-const authMiddleware = require('../middleware/authMiddleware');
+
 
 // Route pour obtenir la liste de tous les postes
 // router.get('/list', authMiddleware,postController.getAllPosts);

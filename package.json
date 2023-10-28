@@ -1,12 +1,12 @@
 {
   "name": "backend_mini_facebook",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/post.test.js",
     "start": "nodemon index.js"
-  }  ,
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
