@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 module.exports = mongoose.model('Poste',{
     author:{
         id:{type : mongoose.Schema.Types.ObjectId},
-        name : {type : String}
+        name : {type : String},
+        image:{type:String, default : ''}
     },
     content : {type : String},
     dateCreation : {
